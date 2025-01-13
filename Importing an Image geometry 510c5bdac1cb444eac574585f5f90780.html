@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Lab 4 (Week 10)</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Importing an Image geometry</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -681,12 +681,37 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="f56fc181-762e-4618-8dca-52393b6ab307" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/science_yellow.svg"/></div><h1 class="page-title">Lab 4 (Week 10)</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ac13eeac-6bae-443e-97c7-82fb409c8a2a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>This lab session focuses on understanding magnetic memory devices and operations through mumax3 platform.</strong></div></figure><p id="17a3d192-8c64-803a-9d71-e963ec2cb80d" class="">
-</p><p id="1793d192-8c64-8066-a9c2-d4c066588a9d" class=""><strong><span style="border-bottom:0.05em solid">mumax3</span></strong>: GitHub opensource page and webpage can be accessed here.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="17a3d192-8c64-8043-941c-e8aef7842379"><div style="width:100%"><ol type="1" id="537baaab-99e0-4c26-a881-dbc677ac81a3" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong><a href="https://github.com/mumax/3">https://github.com/mumax/3</a></strong></mark></li></ol><ol type="1" id="17a3d192-8c64-8070-84a1-efa4ea0f7ef2" class="block-color-default numbered-list" start="2"><li><mark class="highlight-blue"><strong><a href="https://mumax.github.io">https://mumax.github.io</a></strong></mark></li></ol></div></figure><p id="17a3d192-8c64-807b-b816-daa798e52eb8" class="">
-</p><figure id="17a3d192-8c64-8025-a61c-e75e9d4a2436" class="block-color-teal link-to-page"><a href="Introduction%2017a3d1928c648025a61ce75e9d4a2436.html"><span class="icon">1️⃣</span>Introduction</a></figure><figure id="17a3d192-8c64-808b-936a-e8b71a637e91" class="block-color-teal link-to-page"><a href="mumax3%20Access%20&amp;%20Running%2017a3d1928c64808b936ae8b71a637e91.html"><span class="icon">2️⃣</span>mumax3 Access &amp; Running</a></figure><figure id="17a3d192-8c64-8081-bb5d-fb1687239c79" class="block-color-teal link-to-page"><a href="Examples%2017a3d1928c648081bb5dfb1687239c79.html"><span class="icon">3️⃣</span>Examples</a></figure><p id="17a3d192-8c64-80ad-93c8-cadaca6d4db0" class="">
-</p><hr id="17a3d192-8c64-80c7-970c-ed50b8380057"/><p id="1793d192-8c64-809a-8520-f3baebb5c37b" class="">
-</p><p id="17a3d192-8c64-8019-bea1-eb889884c260" class="">
-</p><p id="17a3d192-8c64-8093-8e83-d8aa397c1cf4" class="">
-</p><p id="17a3d192-8c64-80be-a512-ed002ebad1f1" class="">
-</p><p id="17a3d192-8c64-8033-995e-f6eccffc76ae" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+</style></head><body><article id="510c5bda-c1cb-444e-ac57-4585f5f90780" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">5️⃣</span></div><h1 class="page-title"><strong>Importing an Image geometry</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="cc52d9e0-26bc-4cc3-8c0d-e64f2fcf58a8" class="">
+</p><ol type="1" id="9bbb390c-c8cf-4d21-809b-4532465d0860" class="numbered-list" start="1"><li>Draw your profile in any image editor and save as .png (black &amp; white image).</li></ol><ol type="1" id="920b2d54-b142-4d42-b309-833e982b1054" class="numbered-list" start="2"><li>Copy the image to the folder where your mumax input script file is stored.</li></ol><ol type="1" id="17a3d192-8c64-80d4-90d8-ebee49c34da2" class="numbered-list" start="3"><li>Use the “imageshape” function to read your image into the script by providing the image location and extension as “.png”. </li></ol><ol type="1" id="17a3d192-8c64-80fa-bc3c-e41393b9fc73" class="numbered-list" start="4"><li>Use “setgeom” to set the image read as the geometry for the simulation.</li></ol><p id="17a3d192-8c64-801e-a58a-d344c50e949c" class="">
+</p><figure id="7d807b38-af18-48f9-9e16-6b21d7acdd24" class="image"><a href="image%2036.png"><img style="width:192px" src="image%2036.png"/></a></figure><p id="0c3d0f55-f859-4e79-be43-53e2c6495720" class=""><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4413d104-978a-4ef8-abb3-d4bf0afef544" class="code"><code class="language-Go">// Shape of the device
+L := 500e-9
+W := 500e-9
+H := 3e-9
+
+Nx := 64
+Ny := 64
+Nz := 1
+
+setgridsize(Nx, Ny, Nz)
+setcellsize(L/Nx, W/Ny, H/Nz)
+
+a :=imageshape(&quot;shape.png&quot;)     // Import image
+setgeom(a)
+saveas(geom, &quot;geo&quot;)
+
+// Material parameters
+Msat = 800e3
+Aex = 13e-12
+alpha = 0.02
+
+m = uniform(1,.1,0)
+relax()
+save(m)
+
+autosave(m, 200e-12)
+tableautosave(10e-12)
+
+B_ext=vector(-24.6e-3, 4.3e-3, 0)
+
+run(1e-9)</code></pre></div></p><p id="17a3d192-8c64-806b-b36e-dca7580aa45c" class="">
+</p><ol type="1" id="558a3a85-69f9-4c7c-9335-750c369ddb8c" class="numbered-list" start="5"><li>Output magnetization trend for the image geometry input.</li></ol><figure id="100f5800-46d5-4b63-b9c1-d32e3216eacc" class="image"><a href="image%2037.png"><img style="width:384px" src="image%2037.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

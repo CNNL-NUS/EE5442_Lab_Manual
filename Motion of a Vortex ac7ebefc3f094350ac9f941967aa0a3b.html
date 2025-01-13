@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Lab 4 (Week 10)</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Motion of a Vortex</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -681,12 +681,52 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="f56fc181-762e-4618-8dca-52393b6ab307" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/science_yellow.svg"/></div><h1 class="page-title">Lab 4 (Week 10)</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ac13eeac-6bae-443e-97c7-82fb409c8a2a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>This lab session focuses on understanding magnetic memory devices and operations through mumax3 platform.</strong></div></figure><p id="17a3d192-8c64-803a-9d71-e963ec2cb80d" class="">
-</p><p id="1793d192-8c64-8066-a9c2-d4c066588a9d" class=""><strong><span style="border-bottom:0.05em solid">mumax3</span></strong>: GitHub opensource page and webpage can be accessed here.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="17a3d192-8c64-8043-941c-e8aef7842379"><div style="width:100%"><ol type="1" id="537baaab-99e0-4c26-a881-dbc677ac81a3" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong><a href="https://github.com/mumax/3">https://github.com/mumax/3</a></strong></mark></li></ol><ol type="1" id="17a3d192-8c64-8070-84a1-efa4ea0f7ef2" class="block-color-default numbered-list" start="2"><li><mark class="highlight-blue"><strong><a href="https://mumax.github.io">https://mumax.github.io</a></strong></mark></li></ol></div></figure><p id="17a3d192-8c64-807b-b816-daa798e52eb8" class="">
-</p><figure id="17a3d192-8c64-8025-a61c-e75e9d4a2436" class="block-color-teal link-to-page"><a href="Introduction%2017a3d1928c648025a61ce75e9d4a2436.html"><span class="icon">1️⃣</span>Introduction</a></figure><figure id="17a3d192-8c64-808b-936a-e8b71a637e91" class="block-color-teal link-to-page"><a href="mumax3%20Access%20&amp;%20Running%2017a3d1928c64808b936ae8b71a637e91.html"><span class="icon">2️⃣</span>mumax3 Access &amp; Running</a></figure><figure id="17a3d192-8c64-8081-bb5d-fb1687239c79" class="block-color-teal link-to-page"><a href="Examples%2017a3d1928c648081bb5dfb1687239c79.html"><span class="icon">3️⃣</span>Examples</a></figure><p id="17a3d192-8c64-80ad-93c8-cadaca6d4db0" class="">
-</p><hr id="17a3d192-8c64-80c7-970c-ed50b8380057"/><p id="1793d192-8c64-809a-8520-f3baebb5c37b" class="">
-</p><p id="17a3d192-8c64-8019-bea1-eb889884c260" class="">
-</p><p id="17a3d192-8c64-8093-8e83-d8aa397c1cf4" class="">
-</p><p id="17a3d192-8c64-80be-a512-ed002ebad1f1" class="">
-</p><p id="17a3d192-8c64-8033-995e-f6eccffc76ae" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+</style></head><body><article id="ac7ebefc-3f09-4350-ac9f-941967aa0a3b" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">3️⃣</span></div><h1 class="page-title">Motion of a Vortex</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="17a3d192-8c64-808f-a39f-f931e939be2c" class="numbered-list" start="1"><li>Considering a sample with dimension as below and magnetic field applied in the x-direction.</li></ol><ol type="1" id="17a3d192-8c64-8046-b792-c29000528456" class="numbered-list" start="2"><li>The initial magnetization direction is having a vortex formation.</li></ol><ol type="1" id="17a3d192-8c64-801e-b718-c7a0bd977dcc" class="numbered-list" start="3"><li>The hysteresis magnetic field sweep is performed and the movements of the magnetic domains are analyzed.</li></ol><figure id="91a5e29b-6dac-402c-9c28-da6c25f83834" class="image"><a href="image%2032.png"><img style="width:288px" src="image%2032.png"/></a></figure><p id="17a3d192-8c64-80b7-9500-cd39e8c698f4" class=""><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9bbdd542-8a42-4d4d-8ecc-dcc08ed3b073" class="code"><code class="language-Go">// Shape of the device
+L := 100e-9	                                    // Square
+W := 100e-9
+H := 5e-9
+
+Nx := 64
+Ny := 64
+Nz := 1
+
+setgridsize(Nx, Ny, Nz)
+setcellsize(L/Nx, W/Ny, H/Nz)
+
+// Initial Magnetization - Vortex
+Msat = 8e5
+Aex = 13e-12
+alpha = 0.01
+m = vortex(1, -1)
+relax()		
+saveas(m, &quot;dom&quot;)         // minimal energy state
+
+// Field paramters
+bmax := 100.0e-3
+bstep := 1.0e-3
+minimizerstop = 1e-6      // minimizer precision
+tableadd(B_ext)
+
+// Sweep the mag field from 0 -&gt; max
+for b:=0.0; b&lt;=bmax; b+=bstep{
+	B_ext = vector(b, 0, 0)
+	minimize()
+	tablesave()
+	save(m)
+}
+// Sweep the mag field from max -&gt; min
+for b:=bmax; b&gt;=-bmax; b-=bstep{
+	B_ext = vector(b, 0, 0)
+	minimize()
+	tablesave()
+	save(m)
+}
+// Sweep the mag field from min -&gt; max
+for b:=-bmax; b&lt;=bmax; b+=bstep{
+	B_ext = vector(b, 0, 0)
+	minimize()
+	tablesave()
+	save(m)
+}
+</code></pre></div></p><p id="17a3d192-8c64-8093-a1c0-f70e7e181fc3" class="">
+</p><ol type="1" id="286f61b9-c543-4f00-8237-0ee5935701c4" class="numbered-list" start="4"><li>Output graph of the hysteresis with the motion of magnetic domains as the field direction and intensity changes.</li></ol><figure id="56e0474f-9fe6-46bd-a4a0-742553f8d1d0" class="image"><a href="image%2033.png"><img style="width:528px" src="image%2033.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -681,51 +681,43 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="3c12b879-38cf-4f6a-a3ea-e357921bf6c8" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">7️⃣</span></div><h1 class="page-title"><strong>Magnetization dynamics (example-4)</strong></h1><p class="page-description"></p></header><div class="page-body"><figure id="555c4c05-3f62-4368-a077-744756475b7d" class="image"><a href="image%2017.png"><img style="width:416px" src="image%2017.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="64fdfd2f-fe66-443b-a4ca-43042c356248" class="code"><code class="language-Go">// Shape of the device
-L := 100e-9	                                    // Square
-W := 100e-9
-H := 5e-9
+</style></head><body><article id="3c12b879-38cf-4f6a-a3ea-e357921bf6c8" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">4️⃣</span></div><h1 class="page-title"><strong>Magnetization dynamics (example-4)</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="7a68938f-2c68-4890-9ebd-cc82226bd9d3" class="">When the external magnetic field is applied, magnetization oscillates and decays to the stable state.</p><figure id="95b7e4e8-9891-4d74-8ed8-698ea1c5c610" class="image"><a href="image%2034.png"><img style="width:375.9926452636719px" src="image%2034.png"/></a></figure><p id="6d529d13-eeb9-4a77-820f-421aafd95700" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="64fdfd2f-fe66-443b-a4ca-43042c356248" class="code"><code class="language-Go">// Shape of the device
+L := 50e-9
+W := 50e-9
+H := 10e-9
 
 Nx := 64
-Ny := 64
+Ny := 32
 Nz := 1
-
 setgridsize(Nx, Ny, Nz)
 setcellsize(L/Nx, W/Ny, H/Nz)
 
-// Initial Magnetization - Vortex
-Msat = 8e5
-Aex = 13e-12
-alpha = 0.01
-m = vortex(1, -1)
-relax()		
-saveas(m, &quot;dom&quot;)         // minimal energy state
+// Geometry
+setgeom(rect(L, W))                   // Rectangular
+saveas(geom, &quot;geo&quot;)
+
+// Material
+Msat = 19.5e5
+Aex = 17e-12
+
+// Init magentization
+alpha=0.02
+anisU = vector(1, 0, 0)                  // Anisotropy
+Ku1 = 0.5e6
+m = uniform(0, 0, 1)
+EnableDemag=true
+relax()	                      // Minimal Energy 
+saveas(m, &quot;dom&quot;)
 
 // Field paramters
-bmax := 100.0e-3
-bstep := 1.0e-3
-minimizerstop = 1e-6      // minimizer precision
-tableadd(B_ext)
+bmax := 20.0e-3
+tableadd(B_ext) 
+B_ext = vector(bmax, 0, 0)
 
-// Sweep the mag field from 0 -&gt; max
-for b:=0.0; b&lt;=bmax; b+=bstep{
-	B_ext = vector(b, 0, 0)
-	minimize()
-	tablesave()
-	save(m)
-}
-// Sweep the mag field from max -&gt; min
-for b:=bmax; b&gt;=-bmax; b-=bstep{
-	B_ext = vector(b, 0, 0)
-	minimize()
-	tablesave()
-	save(m)
-}
-// Sweep the mag field from min -&gt; max
-for b:=-bmax; b&lt;=bmax; b+=bstep{
-	B_ext = vector(b, 0, 0)
-	minimize()
-	tablesave()
-	save(m)
-}
-</code></pre><p id="ff792f76-77c3-4a42-ae37-533649ef884c" class="">Ouput graph</p><figure id="4aadb5c5-452d-4b07-9231-e822b339809b" class="image"><a href="image%2016.png"><img style="width:528px" src="image%2016.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+// Simulate
+tableautosave(10e-12)
+run(6e-9)}
+</code></pre><p id="02160d20-32a7-4206-84ae-7a4afb3dfe64" class="">
+</p><p id="ff792f76-77c3-4a42-ae37-533649ef884c" class="">Ouput graph</p><figure id="1997c064-d379-49ad-8dbe-30d26990eba8" class="image"><a href="image%2035.png"><img style="width:432px" src="image%2035.png"/></a></figure><p id="353eeac7-561a-41f4-9e6b-55059775c3b1" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
