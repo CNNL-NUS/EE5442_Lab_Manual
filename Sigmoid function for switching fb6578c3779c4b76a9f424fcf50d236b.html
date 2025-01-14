@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain wall motion - Current </title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sigmoid function for switching</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -681,68 +681,32 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="d8d06563-5419-4205-bccd-136fe3fb02b4" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/plus_yellow.svg"/></div><h1 class="page-title"><strong>Domain wall motion - Current </strong></h1><p class="page-description"></p></header><div class="page-body"><p id="11657f65-06c6-484a-b36b-74f80eb91a48" class="">
-</p><figure id="33f5126c-d610-4c05-b296-efd956d94eee" class="image"><a href="image%2045.png"><img style="width:686.9991455078125px" src="image%2045.png"/></a></figure><p id="5fc2c060-5f7e-4c80-ac6d-f6c34d10da63" class="">Code:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2fa1f9a0-10fe-4a37-b923-3d9b26df77b7" class="code"><code class="language-Go">// Shape of the device
-L := 360e-9
-W := 30e-9
-H := 5e-9
+</style></head><body><article id="fb6578c3-779c-4b76-a9f4-24fcf50d236b" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔟</span></div><h1 class="page-title"><strong>Sigmoid function for switching</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="ce7e09ca-324c-41ea-b0a5-9a78a4c49be6" class="">Code:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ac606c56-ed7d-4744-9fd3-8fcd403bd6d6" class="code"><code class="language-Go">// Counting the switching probability by sweeping the current
+// Add this in place of Jc STT samples in the previous slide
 
-Nx := 128
-Ny := 64
-Nz := 1
+for i_max:=0.1e-4; i_max&lt;=3.5e-4; i_max+=0.1e-4 {
+	// sweeping the current from 0 to 0.35 mA with the step of 0.01 mA
+  area := L * W * pi/4
+  jc := i_max/area
 
-setgridsize(Nx, Ny, Nz)
-setcellsize(L/Nx, W/Ny, H/Nz)
-// setpbc(4,0,0) // Periodic Boundary
-
-// Geometry
-setgeom(rect(L, W))
-saveas(geom, &quot;geo&quot;)
-
-// Define Regions of (m)
-defregion(1, xrange(-180e-9, -150e-9))
-defregion(2, xrange(-150e-9, -120e-9))
-defregion(3, xrange(-120e-9, -90e-9))
-defregion(4, xrange(-90e-9, -60e-9))
-defregion(5, xrange(-60e-9, -30e-9))
-defregion(6, xrange(-30e-9, 0))
-defregion(7, xrange(0, 30e-9))
-defregion(8, xrange(30e-9, 60e-9))
-defregion(9, xrange(60e-9, 90e-9))
-defregion(10, xrange(90e-9, 120e-9))
-defregion(11, xrange(120e-9, 150e-9))
-defregion(12, xrange(150e-9, 180e-9))
-
-// Magnetization
-Msat = 8e5
-Aex = 13e-12
-alpha = 0.01
-
-m.setregion(1, uniform(1, 0, 0))
-m.setregion(2, uniform(1, 0, 0))
-m.setregion(3, uniform(1, 1, 0))
-m.setregion(4, uniform(0, 1, 0))
-m.setregion(5, uniform(-1, 1, 0))
-m.setregion(6, uniform(-1, 0, 0))
-m.setregion(7, uniform(-1, 0, 0))
-m.setregion(8, uniform(-1, 1, 0))
-m.setregion(9, uniform(0, 1, 0))
-m.setregion(10, uniform(1, 1, 0))
-m.setregion(11, uniform(1, 0, 0))
-m.setregion(12, uniform(1, 0, 0))
-relax()	    // Minimal energy state
-saveas(m, &quot;dom&quot;)
-
-// Polarization Current 
-i_total := 10e-3	// A
-area := L * W * pi/4		
-jc := i_total/area
-j = vector(jc, 0, 0)
-
-// Saving
-autosave(m, 10e-12)
-tableautosave(10e-12)
-run(1e-9)
-
-</code></pre><p id="42289ed0-9c34-488b-9249-9b3cda0ef0a8" class="">
-</p><p id="57bc8d7f-de64-4208-82c5-9bb27e18d000" class="">Output</p><p id="1ed7f631-0528-44f4-8d8e-44fe78db420c" class="">Domains in a rectangular strip.<br/>Current based relaxation and motion of domain-wall.<br/></p><figure id="d231dde1-ea3a-4d41-9dba-9704e75d913d" class="image"><a href="image%2046.png"><img style="width:707.9750366210938px" src="image%2046.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+  samples := 20
+  for count:=1; count&lt;=samples; count++ {
+			temp = 300
+			thermseed(randint(floor(count*i_max*1e6)))
+			j = vector(0, 0, jc)
+			run(0.2e-9)
+			j = vector(0, 0, 0)		
+			run(3e-9)
+			tablesave()
+		        j = vector(0, 0, 0) 
+		        run(1e-9)
+			j = vector(0, 0, -4*jc)
+			run(0.4e-9)
+			
+			compcent := (count/samples )*100	
+			print(&quot;Complete percent&quot;, compcent)
+  }
+}
+</code></pre><p id="4bdf0c82-ee08-4436-bd47-2c8d6284e228" class="">
+</p><p id="8db4dc34-3810-4dd0-a039-56b745bef234" class="">Output:</p><figure id="9d86fe16-daa5-40c6-bfc5-acf6fe1e3054" class="image"><a href="image%2041.png"><img style="width:288px" src="image%2041.png"/></a></figure><p id="10559f77-7ec1-442a-8a90-d7df10f2eed1" class="">
+</p><p id="df1b7f6f-52c6-4e46-b559-eb33aa230938" class="">With the increase of current amplitude, the switching probability increases and then saturates. This curve can be fitted by the sigmoid function.</p><figure id="cc21cbb8-2ef8-4858-859b-9735da240b25" class="image"><a href="image%2042.png"><img style="width:191.96713256835938px" src="image%2042.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

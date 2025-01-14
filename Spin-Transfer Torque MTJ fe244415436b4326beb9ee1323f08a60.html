@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain wall motion - Current </title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Spin-Transfer Torque MTJ</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -681,68 +681,49 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="d8d06563-5419-4205-bccd-136fe3fb02b4" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/plus_yellow.svg"/></div><h1 class="page-title"><strong>Domain wall motion - Current </strong></h1><p class="page-description"></p></header><div class="page-body"><p id="11657f65-06c6-484a-b36b-74f80eb91a48" class="">
-</p><figure id="33f5126c-d610-4c05-b296-efd956d94eee" class="image"><a href="image%2045.png"><img style="width:686.9991455078125px" src="image%2045.png"/></a></figure><p id="5fc2c060-5f7e-4c80-ac6d-f6c34d10da63" class="">Code:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2fa1f9a0-10fe-4a37-b923-3d9b26df77b7" class="code"><code class="language-Go">// Shape of the device
-L := 360e-9
-W := 30e-9
-H := 5e-9
+</style></head><body><article id="fe244415-436b-4326-beb9-ee1323f08a60" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">6️⃣</span></div><h1 class="page-title"><strong>Spin-Transfer Torque MTJ</strong></h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="17b3d192-8c64-8054-9d7d-e881236e4f1b" class="numbered-list" start="1"><li>Here the MTJ stack is defined in the script with Ferromagnetic and Insulating layers.</li></ol><ol type="1" id="17b3d192-8c64-805b-9bc2-ff7ab36f61c2" class="numbered-list" start="2"><li>The current is injected into the device generating spin transfer torque and switching the free layer magnetization. </li></ol><ol type="1" id="17b3d192-8c64-80ef-8da7-e807977dcdc7" class="numbered-list" start="3"><li>Using this binary data 0s and 1s can be stored on a magnetic device.</li></ol><figure id="4bf2df3b-7092-42d4-89c7-f5dfb7f2d505" class="image"><a href="d3d7fefd-709e-4afb-a5c4-f1b4233efb1e.png"><img style="width:240px" src="d3d7fefd-709e-4afb-a5c4-f1b4233efb1e.png"/></a></figure><p id="17b3d192-8c64-8060-9d97-c144b623e4a0" class="">
+</p><ol type="1" id="17b3d192-8c64-8067-911e-f0cb28f20642" class="numbered-list" start="4"><li>The spacer layer parameters or the insulator are provided for MgO.</li></ol><ol type="1" id="17b3d192-8c64-8028-90ef-fbe2f324d6b3" class="numbered-list" start="5"><li>The spin polarization of the fixed layer are also defined. Here they are in-plane in the x or y axis direction.</li></ol><ol type="1" id="17b3d192-8c64-8019-bdba-ea31337a7552" class="numbered-list" start="6"><li>The current density is computed to be plugged into the LLG solver.</li></ol><p id="f958b13b-99af-45fc-ae44-2be105d1fb8b" class=""><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="54e445e0-c85a-4b27-8c6b-5fc019eb0531" class="code"><code class="language-Go">// geometry
+sizeX := 160e-9
+sizeY := 80e-9
+sizeZ := 5e-9
 
-Nx := 128
-Ny := 64
-Nz := 1
+Nx := 64
+Ny := 32
 
-setgridsize(Nx, Ny, Nz)
-setcellsize(L/Nx, W/Ny, H/Nz)
-// setpbc(4,0,0) // Periodic Boundary
+setgridsize(Nx, Ny, 1)
+setcellsize(sizeX/Nx, sizeY/Ny, sizeZ)  
+setGeom(ellipse(sizeX, sizeY))
+// setgeom to the shape.png
 
-// Geometry
-setgeom(rect(L, W))
-saveas(geom, &quot;geo&quot;)
-
-// Define Regions of (m)
-defregion(1, xrange(-180e-9, -150e-9))
-defregion(2, xrange(-150e-9, -120e-9))
-defregion(3, xrange(-120e-9, -90e-9))
-defregion(4, xrange(-90e-9, -60e-9))
-defregion(5, xrange(-60e-9, -30e-9))
-defregion(6, xrange(-30e-9, 0))
-defregion(7, xrange(0, 30e-9))
-defregion(8, xrange(30e-9, 60e-9))
-defregion(9, xrange(60e-9, 90e-9))
-defregion(10, xrange(90e-9, 120e-9))
-defregion(11, xrange(120e-9, 150e-9))
-defregion(12, xrange(150e-9, 180e-9))
-
-// Magnetization
-Msat = 8e5
+// Free layer parameters
+Msat = 800e3
 Aex = 13e-12
 alpha = 0.01
+m = uniform(1, 0, 0)
+anisU = vector(1, 0, 0)        // Set anisotropy
+Ku1 = 0.3e6                    // Set anisotropy energy
 
-m.setregion(1, uniform(1, 0, 0))
-m.setregion(2, uniform(1, 0, 0))
-m.setregion(3, uniform(1, 1, 0))
-m.setregion(4, uniform(0, 1, 0))
-m.setregion(5, uniform(-1, 1, 0))
-m.setregion(6, uniform(-1, 0, 0))
-m.setregion(7, uniform(-1, 0, 0))
-m.setregion(8, uniform(-1, 1, 0))
-m.setregion(9, uniform(0, 1, 0))
-m.setregion(10, uniform(1, 1, 0))
-m.setregion(11, uniform(1, 0, 0))
-m.setregion(12, uniform(1, 0, 0))
-relax()	    // Minimal energy state
-saveas(m, &quot;dom&quot;)
+// Spacer layer parameters
+lambda = 1            // Slonczewski λ parameter
+Pol = 0.5669          // Electrical current polarization
+epsilonprime = 0      // Slonczewski secondary STT term ε&#x27;
 
-// Polarization Current 
-i_total := 10e-3	// A
-area := L * W * pi/4		
-jc := i_total/area
-j = vector(jc, 0, 0)
+// Fixed layer polarization
+angle := 20
+px := cos(angle * pi/180)
+py := sin(angle * pi/180)
+fixedlayer = vector(px, py, 0)   // fixed layer polarization defined as x, y, z axis
 
-// Saving
-autosave(m, 10e-12)
-tableautosave(10e-12)
-run(1e-9)
+// send current
+Jtot := -0.015             // total current in A
+area := sizeX*sizeY*pi/4
+jc := Jtot / area          // current density in A/m2
+J = vector(0, 0, jc)
 
-</code></pre><p id="42289ed0-9c34-488b-9249-9b3cda0ef0a8" class="">
-</p><p id="57bc8d7f-de64-4208-82c5-9bb27e18d000" class="">Output</p><p id="1ed7f631-0528-44f4-8d8e-44fe78db420c" class="">Domains in a rectangular strip.<br/>Current based relaxation and motion of domain-wall.<br/></p><figure id="d231dde1-ea3a-4d41-9dba-9704e75d913d" class="image"><a href="image%2046.png"><img style="width:707.9750366210938px" src="image%2046.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+// schedule output &amp; run  
+autosave(m, 100e-12)  
+tableautosave(10e-12)  
+run(2e-9)
+</code></pre></div></p><p id="eeb15f34-cac8-4062-b58d-64ba2be1c029" class="">
+</p><ol type="1" id="fdfb5470-54bf-46c3-9339-8c31e35c0731" class="numbered-list" start="7"><li>The output with evolution of magnetization of the free layer is plotted with time. It shows the free layer is switching in-plane with the applied current. </li></ol><figure id="05ca0d86-5930-4169-af83-48a034f4e9b4" class="image"><a href="image%2038.png"><img style="width:432px" src="image%2038.png"/></a></figure><p id="6f85bd31-ca70-4ee8-b92e-26e02294a025" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain wall motion - Current </title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Thermal field</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -681,68 +681,72 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="d8d06563-5419-4205-bccd-136fe3fb02b4" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/plus_yellow.svg"/></div><h1 class="page-title"><strong>Domain wall motion - Current </strong></h1><p class="page-description"></p></header><div class="page-body"><p id="11657f65-06c6-484a-b36b-74f80eb91a48" class="">
-</p><figure id="33f5126c-d610-4c05-b296-efd956d94eee" class="image"><a href="image%2045.png"><img style="width:686.9991455078125px" src="image%2045.png"/></a></figure><p id="5fc2c060-5f7e-4c80-ac6d-f6c34d10da63" class="">Code:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2fa1f9a0-10fe-4a37-b923-3d9b26df77b7" class="code"><code class="language-Go">// Shape of the device
-L := 360e-9
-W := 30e-9
-H := 5e-9
+</style></head><body><article id="220a876c-9872-446f-a4d3-b19ea9bc9438" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">9️⃣</span></div><h1 class="page-title">Thermal field</h1><p class="page-description"></p></header><div class="page-body"><p id="0b4e810e-e0a0-4160-9915-7ae65d843dfd" class="">Code:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="801688b3-0733-48d2-857d-a8075749a384" class="code"><code class="language-Go">// Shape of the device
+L := 14e-9
+W := 8e-9
+H := 1e-9
 
-Nx := 128
-Ny := 64
+Nx := 2 // The grids should be in multiples of 2
+Ny := 2
 Nz := 1
 
 setgridsize(Nx, Ny, Nz)
 setcellsize(L/Nx, W/Ny, H/Nz)
-// setpbc(4,0,0) // Periodic Boundary
+setgeom(ellipse(L, W))
+// setgeom to the shape.png
 
-// Geometry
-setgeom(rect(L, W))
-saveas(geom, &quot;geo&quot;)
-
-// Define Regions of (m)
-defregion(1, xrange(-180e-9, -150e-9))
-defregion(2, xrange(-150e-9, -120e-9))
-defregion(3, xrange(-120e-9, -90e-9))
-defregion(4, xrange(-90e-9, -60e-9))
-defregion(5, xrange(-60e-9, -30e-9))
-defregion(6, xrange(-30e-9, 0))
-defregion(7, xrange(0, 30e-9))
-defregion(8, xrange(30e-9, 60e-9))
-defregion(9, xrange(60e-9, 90e-9))
-defregion(10, xrange(90e-9, 120e-9))
-defregion(11, xrange(120e-9, 150e-9))
-defregion(12, xrange(150e-9, 180e-9))
-
-// Magnetization
-Msat = 8e5
-Aex = 13e-12
+//Free Layer
+Msat = 19.5e5               // FeCo
+Aex = 17e-12
 alpha = 0.01
+anisU = vector(1, 0, 0)     // In plane
+Ku1 = 0.1e6                 // Anisotropy
+m = uniform(1, 0, 0) 
 
-m.setregion(1, uniform(1, 0, 0))
-m.setregion(2, uniform(1, 0, 0))
-m.setregion(3, uniform(1, 1, 0))
-m.setregion(4, uniform(0, 1, 0))
-m.setregion(5, uniform(-1, 1, 0))
-m.setregion(6, uniform(-1, 0, 0))
-m.setregion(7, uniform(-1, 0, 0))
-m.setregion(8, uniform(-1, 1, 0))
-m.setregion(9, uniform(0, 1, 0))
-m.setregion(10, uniform(1, 1, 0))
-m.setregion(11, uniform(1, 0, 0))
-m.setregion(12, uniform(1, 0, 0))
-relax()	    // Minimal energy state
-saveas(m, &quot;dom&quot;)
+// Space layer parameters
+lambda = 1	
+pol = 0.5669
+epsilonprime = 0
 
-// Polarization Current 
-i_total := 10e-3	// A
-area := L * W * pi/4		
-jc := i_total/area
-j = vector(jc, 0, 0)
+// Fixed layer polarization
+phi := 0
+px := cos(phi*pi/180)
+py := sin(phi*pi/180)
+fixedlayer = vector(px, py, 0)
+EnableDemag=true     // Enable Demag Field
 
-// Saving
-autosave(m, 10e-12)
-tableautosave(10e-12)
-run(1e-9)
+// Apply current
+i_max := 1.7e-4	        // Applied current in A
+area := L * W * pi/4
+jc := i_max/area
 
-</code></pre><p id="42289ed0-9c34-488b-9249-9b3cda0ef0a8" class="">
-</p><p id="57bc8d7f-de64-4208-82c5-9bb27e18d000" class="">Output</p><p id="1ed7f631-0528-44f4-8d8e-44fe78db420c" class="">Domains in a rectangular strip.<br/>Current based relaxation and motion of domain-wall.<br/></p><figure id="d231dde1-ea3a-4d41-9dba-9704e75d913d" class="image"><a href="image%2046.png"><img style="width:707.9750366210938px" src="image%2046.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+// Saving Data
+tableAdd(b_therm)      // Thermal Field
+tableAdd(b_eff)        // Effective Field
+tableadd(j)	           // Record parameter
+
+// Sampling and STT Pulse
+samples := 20
+for count:=1; count&lt;=samples; count++{
+	subitime:=now()
+	temp = 300	                                     // Temperature
+	thermseed(randint(floor(count*i_max*1e6))) // Random Seed
+		// Random seed should also be randomized randint()
+		// thermseed(ranint(count*current)) for each loop
+		// The randint() only takes int values
+	j = vector(0, 0, jc)    // STT current pulse for switching
+	run(0.2e-9)
+	j = vector(0, 0, 0)		
+	run(3e-9)
+	tablesave()  	          // Save the values at completion
+	j = vector(0, 0, 0)		
+	run(1e-9)	 
+	j = vector(0, 0, -4*jc) 	       // STT Reset Pulse
+	run(0.4e-9)
+	
+	// Completion%
+	compcent := (count/samples )*100	
+	print(&quot;Complete percent&quot;, compcent)
+}
+</code></pre><p id="0a8ca549-c1ea-4cec-872c-b4735e202f0d" class="">
+</p><p id="907ff526-aaea-46ec-8054-739b6084d04a" class="">Ouput:</p><figure id="fb2c5abc-02a8-4ceb-a238-d94c0e64fc36" class="image"><a href="image%2040.png"><img style="width:384px" src="image%2040.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
