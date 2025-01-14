@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Consultations</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Applying current pulse</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -681,10 +681,57 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="6d1c6d5e-c218-4e91-9062-ceb18d522091" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/groups_lightgray.svg"/></div><h1 class="page-title">Consultations</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="7974d5d1-71a9-4671-819a-e718f2341ae6" class="numbered-list" start="1"><li>The consultation sessions will be held in the the two successive weeks after a lab session. </li></ol><p id="241c51af-5da9-4aad-a671-bcc336d1900c" class="">
-</p><ol type="1" id="87cf00d8-0d3b-4f7c-96c4-4daa7b1aa36b" class="numbered-list" start="2"><li><span style="border-bottom:0.05em solid">These sessions are not compulsory, the student can attend based on the requirement.</span></li></ol><p id="595ba199-3af9-435d-a948-83f1771f63b0" class="">
-</p><ol type="1" id="dae656cf-7c8f-4f0a-b8f1-5b3c66e41cff" class="numbered-list" start="3"><li>In the consultation session the students can discuss with the GAs about their doubts regarding the content introduced lab session and the milestone being addressed. These sessions are focused only for the labs and not for the discussion about the lectures. </li></ol><p id="76d6304a-d844-4507-839b-67751c9509ab" class="">
-</p><ol type="1" id="f42495d0-b706-460f-9d8c-8e9416dca21f" class="numbered-list" start="4"><li>The sessions will be held <span style="border-bottom:0.05em solid">before the lecture in the afternoon at 1500hrs</span>.</li></ol><p id="0fc36a77-f556-42eb-a7f2-657068eae5f1" class="">
-</p><ol type="1" id="67298d5e-065d-408f-8a11-06a9e49e25e5" class="numbered-list" start="5"><li>The meeting links to the consultation session are provided in <mark class="highlight-blue"><strong><a href="https://www.nus.edu.sg/canvas/login/">Canvas-NUS</a></strong></mark><mark class="highlight-default">. <br/><br/></mark><em><mark class="highlight-default">(The student has to login with SSO for Zoom meeting with the NUS email ID).</mark></em></li></ol><p id="4333ce8b-dcbf-4fdf-8b6a-23fca2aa3db6" class="">
-</p><p id="94333333-e4ed-4a3f-abb6-147cca65fa2a" class="">For any questions please contact the GAs attached to the course. You can find their contact in the <mark class="highlight-red"><strong><a href="https://www.notion.so/Contact-GA-3251ddc9ae7444a9b7863b3ef5fe4451?pvs=21">Contact-GA</a></strong></mark><mark class="highlight-red"><strong> </strong></mark><mark class="highlight-default">page.</mark></p><p id="bd1306be-044e-486f-82d6-ab3336cccbbe" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+</style></head><body><article id="69dac6f7-0ed4-45b7-81a4-6850ba2bcc28" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">8️⃣</span></div><h1 class="page-title"><strong>Applying current pulse</strong></h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="17b3d192-8c64-80a4-adbf-ddac012333e5" class="numbered-list" start="1"><li>A current pulse is applied to the device. </li></ol><ol type="1" id="17b3d192-8c64-80e4-ba88-e61b27d53876" class="numbered-list" start="2"><li>The pulse durations can be defined, with the on and off times.</li></ol><ol type="1" id="17b3d192-8c64-8061-9059-fee81b66306b" class="numbered-list" start="3"><li>The durations should be in limits of the solver step time, else it might give unintended responses. </li></ol><p id="94e7951f-9e80-4c9b-b0c9-ac326170df6e" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3d4ad33f-44c2-4492-852c-b55e8d95e94e" class="code"><code class="language-Go">// geometry
+sizeX := 160e-9
+sizeY := 80e-9
+sizeZ := 5e-9
+
+Nx := 64
+Ny := 32
+Nz := 1
+
+setgridsize(Nx, Ny, Nz)
+setcellsize(sizeX/Nx, sizeY/Ny, sizeZ/Nz)  
+setGeom(ellipse(sizeX, sizeY))
+// setgeom to the shape.png
+
+// Free layer parameters
+Msat = 800e3
+Aex = 13e-12
+alpha = 0.01
+m = uniform(1, 0, 0)
+anisU = vector(1, 0, 0)                            // Set anisotropy
+Ku1 = 0.3e6                                        // Set anisotropy energy
+
+// Space layer parameters
+lambda = 1                                         // Slonczewski λ parameter
+Pol = 0.5669                                       // Electrical current polarization
+epsilonprime = 0                                   // Slonczewski secondary STT term ε&#x27;
+
+// Fixed layer polarization
+angle := 0
+px := -cos(angle * pi/180)
+py := sin(angle * pi/180)
+fixedlayer = vector(px, py, 0)
+
+// Current
+Jtot := 0.015                                       // total current in A
+area := sizeX*sizeY*pi/4
+jc := Jtot / area                                   // current density in A/m2
+
+// Schedule output &amp; run  
+autosave(m, 100e-12)  
+tableautosave(10e-12)  
+tableadd(j)
+
+// Applying current pulse 
+J = vector(0, 0, 0)
+run(0.2e-9)
+J = vector(0, 0, jc)
+run(0.6e-9)
+J = vector(0, 0, 0)
+run(1e-9)
+</code></pre><p id="a72a378b-26ac-4cdf-8dcc-0090b8b1a5a8" class="">
+</p><ol type="1" id="dc9895d3-094e-47e2-89a6-dffeac7ae0b3" class="numbered-list" start="4"><li>The in-plane magnetization in x-direction is switching as seen in the plot of Magnetization vs Time. The current pulse is applied for 600ps with 200ps offset at the start. The pulse is represent in red in the below graph Jc_STT vs Time. </li></ol><p id="17b3d192-8c64-8044-b42b-fcfc8f412cb8" class="">
+</p><figure id="7cd5619a-3993-485e-81ba-b5f83106b7c8" class="image"><a href="image%2039.png"><img style="width:384px" src="image%2039.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
