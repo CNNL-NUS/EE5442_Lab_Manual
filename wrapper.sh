@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "wrap here"
 . /etc/profile
 module load local pytorch/py3/2.2.0
 
@@ -10,3 +11,5 @@ module load local pytorch/py3/2.2.0
 # run. Then, uncomment the next two lines.
 #cd <working_dir> && \
 #python3 <path_to_python_script> 
+
+echo "wrapper successful"
