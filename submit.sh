@@ -1,5 +1,10 @@
 #!/bin/bash
 #PBS -j oe
+#PBS -l vnode=Server_Name_Add_Here
+#PBS -l walltime=24:00:00
+#PBS -l cudamem=500mb
+#PBS -l ncpus=4
+#PBS -l mem=4gb
 
 . /etc/profile
 module load local singularity
