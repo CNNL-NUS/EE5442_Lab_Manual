@@ -1,0 +1,756 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Basic Operations of Sentaurus Workbench   </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19b3d192-8c64-8056-a84f-e2b14583f08c" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">2️⃣</span></div><h1 class="page-title"><strong>Basic Operations of Sentaurus Workbench</strong>   </h1><p class="page-description"></p></header><div class="page-body"><p id="19b3d192-8c64-8041-89c6-f63fc72871ae" class="">
+</p><h1 id="19b3d192-8c64-8079-b50d-c10a25c4a21f" class=""> 1. <strong>Start Sentaurus in workstations by MobaXterm</strong> </h1><p id="19b3d192-8c64-8025-8acd-df4ed2fa5f32" class="">  </p><ul id="19b3d192-8c64-802a-ae45-fa3c516c8143" class="bulleted-list"><li style="list-style-type:disc">The shell commands to open Sentaurus and run the GUI.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19b3d192-8c64-8098-b69b-de1532b9f77b" class="code"><code class="language-Shell">mkdir &lt;folder_name&gt;
+cd &lt;folder_name&gt;
+/apps_SEEDER01/containers/scripts/sentaurus/loadSentaurusTCADEnv.sh -shell
+. /etc/profile
+
+module load synopsys/sentaurus
+
+tcsh
+
+swb</code></pre></li></ul><p id="19b3d192-8c64-807f-abb7-c5bb624f6e4e" class="">
+</p><figure id="19b3d192-8c64-807e-b2ba-d1c1c7f489a6" class="image"><a href="image%2010.png"><img style="width:672px" src="image%2010.png"/></a></figure><p id="19b3d192-8c64-800e-b050-df803c872c5d" class="">
+</p><figure id="19b3d192-8c64-8097-8551-feea433666e6" class="image"><a href="image%2011.png"><img style="width:480px" src="image%2011.png"/></a></figure><p id="19b3d192-8c64-801c-af20-c73562559494" class="">
+</p><h1 id="19b3d192-8c64-803c-bc38-cc3527ee8d44" class=""><strong>2. Create new project</strong>   </h1><figure id="19b3d192-8c64-80be-8544-e69873af0be0" class="image"><a href="image%2012.png"><img style="width:576px" src="image%2012.png"/></a></figure><p id="19b3d192-8c64-804a-aa15-e4a1fd855a1d" class="">
+</p><h1 id="19b3d192-8c64-8010-ba98-c838aa8895c8" class=""><strong>3. Save new project</strong>   </h1><figure id="19b3d192-8c64-80f4-9c74-c4d452bba523" class="image"><a href="image%2013.png"><img style="width:576px" src="image%2013.png"/></a></figure><figure id="19b3d192-8c64-80b4-8907-cd48fde8d395" class="image"><a href="image%2014.png"><img style="width:672px" src="image%2014.png"/></a></figure><p id="19b3d192-8c64-8036-8ba7-fd89920ace2b" class="">
+</p><p id="19b3d192-8c64-806e-a2e2-d7aebacb993a" class="">
+</p><h1 id="19b3d192-8c64-8089-92a5-d068b6267c7a" class=""> 4. <strong>Add SDE tool for device structure design</strong>   </h1><figure id="19b3d192-8c64-8097-8873-cec2de2ba1ec" class="image"><a href="image%2015.png"><img style="width:624px" src="image%2015.png"/></a></figure><figure id="19b3d192-8c64-80ab-8b03-f460a9dfbc72" class="image"><a href="image%2016.png"><img style="width:624px" src="image%2016.png"/></a></figure><p id="19b3d192-8c64-804e-8dca-ec1cfeb58be6" class="">
+</p><figure id="19b3d192-8c64-8062-bda1-c7f03e51b92a" class="image"><a href="image%2017.png"><img style="width:624px" src="image%2017.png"/></a></figure><p id="19b3d192-8c64-8054-abb7-c1d008fa6291" class="">
+</p><figure id="19b3d192-8c64-80cb-886a-c080dd31fbf9" class="image"><a href="image%2018.png"><img style="width:624px" src="image%2018.png"/></a></figure><p id="19b3d192-8c64-80d7-bd73-ef847e20b36a" class="">
+</p><figure id="19b3d192-8c64-8016-9aaf-e7cbe3f410b7" class="image"><a href="image%2019.png"><img style="width:624px" src="image%2019.png"/></a></figure><p id="19b3d192-8c64-8064-9bf2-f04e68695f08" class="">
+</p><h1 id="19b3d192-8c64-80f8-a7d1-c5ce2da51e63" class=""> 5. <strong>Edit sde_des.cmd for device design</strong>   </h1><figure id="19b3d192-8c64-8037-a027-d15d5cd4e57a" class="image"><a href="image%2020.png"><img style="width:624px" src="image%2020.png"/></a></figure><p id="19b3d192-8c64-80d4-8478-d22189e2edb5" class="">
+</p><h1 id="19b3d192-8c64-80fd-add3-f81ba4838293" class=""> 6. <strong>Run SDE node</strong>   </h1><figure id="19b3d192-8c64-800c-8168-ecbe6b918c0c" class="image"><a href="image%2021.png"><img style="width:672px" src="image%2021.png"/></a></figure><p id="19b3d192-8c64-80df-a7cb-d9195e4df856" class="">
+</p><h1 id="19b3d192-8c64-803e-86ed-dc22a37c2268" class=""> 7. <strong>Visualize device structure</strong>   </h1><figure id="19b3d192-8c64-805f-9993-ed2de1ee0521" class="image"><a href="image%2022.png"><img style="width:709.984375px" src="image%2022.png"/></a></figure><p id="19b3d192-8c64-80c3-b049-c2f185972e33" class="">
+</p><figure id="19b3d192-8c64-8063-a981-d0a5d3058875" class="image"><a href="image%2023.png"><img style="width:709.96875px" src="image%2023.png"/></a></figure><figure id="19b3d192-8c64-8006-bf56-f6d19e3d630d" class="image"><a href="image%2024.png"><img style="width:672px" src="image%2024.png"/></a></figure><h1 id="19b3d192-8c64-80e2-b014-f07e5fbfec8f" class=""><strong>8. Add SDEVICE tool for electrical performance simulation</strong>   </h1><figure id="19b3d192-8c64-804c-8c85-c87059728f89" class="image"><a href="image%2025.png"><img style="width:672px" src="image%2025.png"/></a></figure><p id="19b3d192-8c64-80eb-b1c6-c576cf99f026" class="">
+</p><figure id="19b3d192-8c64-8096-be40-fa4ac5ca6275" class="image"><a href="image%2026.png"><img style="width:590px" src="image%2026.png"/></a></figure><p id="19b3d192-8c64-80b5-9d9d-cd717b425a7e" class="">
+</p><figure id="19b3d192-8c64-80eb-bb0d-fd2b4da88ed8" class="image"><a href="image%2027.png"><img style="width:576px" src="image%2027.png"/></a></figure><p id="19b3d192-8c64-80b4-8aa2-d633913cbb20" class="">
+</p><figure id="19b3d192-8c64-80e7-8641-ee717fe804f1" class="image"><a href="image%2028.png"><img style="width:576px" src="image%2028.png"/></a></figure><p id="19b3d192-8c64-8050-9c84-f940eb69f62c" class="">
+</p><figure id="19b3d192-8c64-80ee-b0c0-e3b980fa8154" class="image"><a href="image%2029.png"><img style="width:576px" src="image%2029.png"/></a></figure><p id="19b3d192-8c64-8088-8903-d84ab19c8d70" class="">
+</p><h1 id="19b3d192-8c64-8061-8aa8-e4d62fb82d10" class=""> 9. <strong>Edit sdevice_des.cmd for electrical simulator setup</strong>   </h1><p id="19b3d192-8c64-80d1-b670-ec8c30376090" class="">
+</p><figure id="19b3d192-8c64-80b7-be42-c5103384e6b5" class="image"><a href="image%2030.png"><img style="width:624px" src="image%2030.png"/></a></figure><p id="19b3d192-8c64-802a-ae06-cc55512c13c4" class="">
+</p><h1 id="19b3d192-8c64-80b8-a2db-f2e634deaf12" class="">10. <strong>Create sdevice.par to define material parameters</strong>   </h1><figure id="19b3d192-8c64-80de-9bd8-f1848f017154" class="image"><a href="image%2031.png"><img style="width:672px" src="image%2031.png"/></a></figure><p id="19b3d192-8c64-800f-9443-d324eb0778f2" class="">
+</p><figure id="19b3d192-8c64-80dd-881e-e0e4f1cba355" class="image"><a href="image%2032.png"><img style="width:672px" src="image%2032.png"/></a></figure><p id="19b3d192-8c64-806e-8aa5-d8085e370a31" class="">
+</p><figure id="19b3d192-8c64-8070-8c13-e9eb385bb910" class="image"><a href="image%2033.png"><img style="width:672px" src="image%2033.png"/></a></figure><p id="19b3d192-8c64-80d7-b0f1-e87e0b3c1a8e" class="">
+</p><figure id="19b3d192-8c64-80b5-8cfb-e478773c71cc" class="image"><a href="image%2034.png"><img style="width:672px" src="image%2034.png"/></a></figure><p id="19b3d192-8c64-80ed-8fda-cd1b779f9d16" class="">
+</p><figure id="19b3d192-8c64-807c-9a64-dbe5e4b0e034" class="image"><a href="image%2035.png"><img style="width:672px" src="image%2035.png"/></a></figure><p id="19b3d192-8c64-80be-8697-fefe3ad1706e" class="">
+</p><figure id="19b3d192-8c64-8010-bcf6-dd9d15476b17" class="image"><a href="image%2036.png"><img style="width:672px" src="image%2036.png"/></a></figure><p id="19b3d192-8c64-80bc-80b2-d2d1e3279b70" class="">
+</p><h1 id="19b3d192-8c64-80d9-aec7-c90148f91bbb" class=""><strong>11. Run SDEVICE tool</strong>   </h1><figure id="19b3d192-8c64-8091-b051-c0c5851da1ba" class="image"><a href="image%2037.png"><img style="width:686px" src="image%2037.png"/></a></figure><p id="19b3d192-8c64-800a-8c08-cb8ebbb4f12f" class="">
+</p><p id="19b3d192-8c64-8045-9735-d2471c61fd4c" class="">
+</p><h1 id="19b3d192-8c64-803a-8176-e1b92751f1b5" class=""><strong>12. Check error message</strong>   </h1><p id="19b3d192-8c64-80ef-8523-ed935149a463" class="">
+</p><figure id="19b3d192-8c64-8097-91a3-ecd420ce791e" class="image"><a href="image%2038.png"><img style="width:672px" src="image%2038.png"/></a></figure><p id="19b3d192-8c64-80b4-b92a-cd053ed63613" class="">
+</p><figure id="19b3d192-8c64-80ce-a318-f806e64bb960" class="image"><a href="image%2039.png"><img style="width:672px" src="image%2039.png"/></a></figure><p id="19b3d192-8c64-8073-85f6-c8c451b8df4f" class="">
+</p><p id="19b3d192-8c64-80b5-9893-d9da7ac2b5a4" class="">
+</p><h1 id="19b3d192-8c64-804f-8d65-c68485dae306" class=""> 13. <strong>Visualize simulated electrical characteristic curves</strong>   </h1><figure id="19b3d192-8c64-8077-b8d0-c3bc8051a83e" class="image"><a href="image%2040.png"><img style="width:672px" src="image%2040.png"/></a></figure><p id="19b3d192-8c64-8002-8592-e296af8f868d" class="">
+</p><figure id="19b3d192-8c64-80b7-aaff-fc698e28f479" class="image"><a href="image%2041.png"><img style="width:720px" src="image%2041.png"/></a></figure><p id="19b3d192-8c64-80b6-8413-ee134846b597" class="">
+</p><figure id="19b3d192-8c64-801c-87a6-cc2cffda9eda" class="image"><a href="image%2042.png"><img style="width:720px" src="image%2042.png"/></a></figure><p id="19b3d192-8c64-8068-ac44-cc40a23f406d" class="">
+</p><figure id="19b3d192-8c64-80d2-993a-e6c0a9b701a6" class="image"><a href="image%2043.png"><img style="width:720px" src="image%2043.png"/></a></figure><p id="19b3d192-8c64-807d-a14e-d72bdd3f0014" class="">
+</p><figure id="19b3d192-8c64-80e0-8c6e-fe22e3abf8ab" class="image"><a href="image%2044.png"><img style="width:720px" src="image%2044.png"/></a></figure><p id="19b3d192-8c64-80eb-84d8-de32c7af0b81" class="">
+</p><h1 id="19b3d192-8c64-808b-902a-cafb4d0ed07f" class=""><strong>14. Save data to the file</strong>   </h1><p id="19b3d192-8c64-80b9-9fde-e41136122981" class="">
+</p><figure id="19b3d192-8c64-809a-a6c0-ec477df3b859" class="image"><a href="image%2045.png"><img style="width:709.96875px" src="image%2045.png"/></a></figure><p id="19b3d192-8c64-805c-9bb4-ea32121737a5" class="">
+</p><p id="19b3d192-8c64-8094-98b3-e017830fa523" class="">
+</p><figure id="19b3d192-8c64-809f-8f5a-e67a94c9d067" class="image"><a href="image%2046.png"><img style="width:709.953125px" src="image%2046.png"/></a></figure><p id="19b3d192-8c64-80c2-ba27-f09d2e25d863" class="">
+</p><p id="19b3d192-8c64-8008-be3d-d23a8a472b8f" class="">
+</p><figure id="19b3d192-8c64-8013-a019-ee3271161a0f" class="image"><a href="image%2047.png"><img style="width:672px" src="image%2047.png"/></a></figure><p id="19b3d192-8c64-804b-b802-fa6819fa9cbd" class="">
+</p><p id="19b3d192-8c64-8092-ad16-c81b96122307" class="">
+</p><h1 id="19b3d192-8c64-80be-9176-e48101cf8fc5" class=""> 15. <strong>Add variables in simulation</strong>   </h1><p id="19b3d192-8c64-80be-becd-ddf7fd3361fe" class="">
+</p><ol type="1" id="19b3d192-8c64-80e5-8238-c167c6eb8bb1" class="numbered-list" start="1"><li>Add variables in cmd file</li></ol><figure id="19b3d192-8c64-80fb-ab64-c6f87d12f480" class="image"><a href="d1d3dd50-d123-474b-8050-de5009a6b5eb.png"><img style="width:624px" src="d1d3dd50-d123-474b-8050-de5009a6b5eb.png"/></a></figure><p id="19b3d192-8c64-806f-aed6-e8062666da13" class="">
+</p><ol type="1" id="19b3d192-8c64-8053-a4f2-d22283670b1c" class="numbered-list" start="2"><li>Add variables in Sentaurus workbench</li></ol><figure id="19b3d192-8c64-8099-875c-f5d77fc0c421" class="image"><a href="image%2048.png"><img style="width:480px" src="image%2048.png"/></a></figure><p id="19b3d192-8c64-80a7-beb4-e86fc41526e3" class="">
+</p><figure id="19b3d192-8c64-8025-ac5f-cbae8b7a6e90" class="image"><a href="image%2049.png"><img style="width:480px" src="image%2049.png"/></a></figure><p id="19b3d192-8c64-80eb-953d-cf6ad38ec27b" class="">
+</p><figure id="19b3d192-8c64-80aa-9744-d6a1ef219457" class="image"><a href="image%2050.png"><img style="width:528px" src="image%2050.png"/></a></figure><p id="19b3d192-8c64-80f8-a792-e0d8cd194cf6" class="">
+</p><figure id="19b3d192-8c64-8000-9641-eec5ae9aead8" class="image"><a href="image%2051.png"><img style="width:624px" src="image%2051.png"/></a></figure><p id="19b3d192-8c64-8055-b6ff-f8e17f92fbe2" class="">
+</p><figure id="19b3d192-8c64-802b-8194-d32f37d75a11" class="image"><a href="image%2052.png"><img style="width:384px" src="image%2052.png"/></a></figure><p id="19b3d192-8c64-80c6-8d2e-dc7cc37055d0" class="">
+</p><h1 id="19b3d192-8c64-8078-b14c-de90b97f0221" class=""> 16. <strong>Add new materials for simulation (HZO)</strong>   </h1><p id="19b3d192-8c64-802e-8ae6-c1f4b992dfd0" class="">
+</p><ul id="19b3d192-8c64-80f3-bc05-e37a2bffa645" class="bulleted-list"><li style="list-style-type:disc">Create a txt file in the project folder named as “datexcodes.txt” to state the new material.</li></ul><p id="19b3d192-8c64-8039-9fe0-c905afccdbdc" class=""><strong>File content:</strong><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19b3d192-8c64-80ae-ac03-f6753ad85830" class="code"><code class="language-Shell">Materials {
+HZO{
+code = 998
+label = &quot;Ferroelectric material&quot;
+group = Insulator
+color = #dfa955
+}
+}</code></pre></div></p><p id="19b3d192-8c64-8070-ba5e-f8ff0fa0a5c7" class="">
+</p><figure id="19b3d192-8c64-8070-a0ad-c8d95b430e1a" class="image"><a href="image%2053.png"><img style="width:709.96875px" src="image%2053.png"/></a></figure><p id="19b3d192-8c64-80e6-a341-e529eaf46d49" class="">
+</p><ul id="19b3d192-8c64-8084-91a0-d5c9d0b6d192" class="bulleted-list"><li style="list-style-type:disc">Edit sde.cmd</li></ul><ul id="19b3d192-8c64-8002-a09d-dcacf8291eab" class="bulleted-list"><li style="list-style-type:disc">Create a region with the name of the new material.</li></ul><figure id="19b3d192-8c64-80d6-9bde-d5a5d82d20af" class="image"><a href="image%2054.png"><img style="width:288px" src="image%2054.png"/></a></figure><ul id="19b3d192-8c64-8034-8cb6-d21a76e4c0c8" class="bulleted-list"><li style="list-style-type:disc">Edit sdevice.par</li></ul><figure id="19b3d192-8c64-8079-83bd-e85800a8d3eb" class="image"><a href="image%2055.png"><img style="width:624px" src="image%2055.png"/></a></figure><p id="19b3d192-8c64-80fe-ba52-cc2ce00c0e6e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
