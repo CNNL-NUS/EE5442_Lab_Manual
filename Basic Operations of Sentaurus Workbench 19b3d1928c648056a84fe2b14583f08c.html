@@ -683,8 +683,11 @@ blockquote {
 	
 </style></head><body><article id="19b3d192-8c64-8056-a84f-e2b14583f08c" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">2️⃣</span></div><h1 class="page-title"><strong>Basic Operations of Sentaurus Workbench</strong>   </h1><p class="page-description"></p></header><div class="page-body"><p id="19b3d192-8c64-8041-89c6-f63fc72871ae" class="">
 </p><h1 id="19b3d192-8c64-8079-b50d-c10a25c4a21f" class=""> 1. <strong>Start Sentaurus in workstations by MobaXterm</strong> </h1><p id="19b3d192-8c64-8025-8acd-df4ed2fa5f32" class="">  </p><ul id="19b3d192-8c64-802a-ae45-fa3c516c8143" class="bulleted-list"><li style="list-style-type:disc">The shell commands to open Sentaurus and run the GUI.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19b3d192-8c64-8098-b69b-de1532b9f77b" class="code"><code class="language-Shell">mkdir &lt;folder_name&gt;
+
 cd &lt;folder_name&gt;
-/apps_SEEDER01/containers/scripts/sentaurus/loadSentaurusTCADEnv.sh -shell
+
+/apps/containers/scripts/sentaurus/loadSentaurusTCADEnv.sh -shell
+
 . /etc/profile
 
 module load synopsys/sentaurus
